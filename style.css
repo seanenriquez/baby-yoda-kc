@@ -1,0 +1,375 @@
+html {
+	font-size: 22px;
+   }
+   
+   #main-form-menu {
+	max-height: 100vh;
+	overflow: overlay;
+	width: 40%;
+	z-index: 300;
+	background-color: darkgray;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+   }
+   
+   #main-form-menu:hover {
+	opacity: 1;
+   }
+   
+   #whole {
+	transform-origin: center center;
+	transform-box: fill-box;
+	overflow: visible !important;
+   }
+   
+   #back_ball {
+	opacity: 0.75;
+   }
+   
+   #yoda,
+   #clothes,
+   #headwear,
+   #face_accessories,
+   #hands,
+   #tattoos,
+   #yoda_overhang_accessories,
+   #mouths {
+	animation: yoda 10s infinite alternate;
+	transform-origin: initial;
+   }
+   
+   #left_eye,
+   #right_eye {
+	animation: blink 15s infinite alternate;
+   }
+   
+   #alien > #dongle {
+	animation: dongle 3s infinite alternate;
+	transform-origin: 240px 200px;
+   }
+   
+   #left_ear {
+	animation: left-ear 3s infinite alternate;
+	transform-box: fill-box;
+	transform-origin: 100% 50%;
+   }
+   
+   #right_ear {
+	animation: right-ear 3s infinite alternate;
+	transform-box: fill-box;
+	transform-origin: 0% 50%;
+   }
+   
+   #left_hand {
+	animation: hand 10s infinite;
+	transform-box: view-box;
+	transform-origin: 50% 54%;
+	transform: rotate(-35deg);
+   }
+   
+   #right_hand {
+	display: block !important;
+	animation: rightHand 10s infinite;
+	transform-box: view-box;
+	transform-origin: 65% 53%;
+   }
+   
+   @keyframes yoda {
+	0% {
+	  transform: rotate(-3deg);
+	}
+	100% {
+	  transform: rotate(3deg);
+	}
+   }
+   @keyframes right-ear {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(-10deg);
+	}
+	100% {
+	  transform: rotate(10deg);
+	}
+   }
+   @keyframes left-ear {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(15deg);
+	}
+	100% {
+	  transform: rotate(-10deg);
+	}
+   }
+   @keyframes dongle {
+	0% {
+	  transform: rotate(7deg);
+	}
+	100% {
+	  transform: rotate(-7deg);
+	}
+   }
+   @keyframes blink {
+	0% {
+	  transform: translatex(2px);
+	}
+	30% {
+	  opacity: 1;
+	}
+	31% {
+	  opacity: 0;
+	}
+	32% {
+	  opacity: 1;
+	}
+	72% {
+	  opacity: 1;
+	}
+	73% {
+	  opacity: 0;
+	}
+	74% {
+	  opacity: 1;
+	}
+	100% {
+	  transform: translatex(-2px);
+	}
+   }
+   @keyframes hand {
+	0% {
+	  transform: rotate(-45deg);
+	}
+	15% {
+	  transform: rotate(20deg);
+	}
+	50% {
+	  transform: rotate(15deg);
+	}
+	85% {
+	  transform: rotate(20deg);
+	}
+	100% {
+	  transform: rotate(-45deg);
+	}
+   }
+   @keyframes rightHand {
+	0% {
+	  transform: rotate(30deg);
+	}
+	15% {
+	  transform: rotate(-10deg);
+	}
+	50% {
+	  transform: rotate(-25deg);
+	}
+	85% {
+	  transform: rotate(-10deg);
+	}
+	100% {
+	  transform: rotate(30deg);
+	}
+   }
+   #freddy > g > :nth-child(4) {
+	display: block !important;
+	animation: freddy-fingers 2s infinite;
+	animation-delay: 1s;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+   }
+   
+   #freddy > g > :nth-child(5) {
+	display: block !important;
+	animation: freddy-fingers 2s infinite;
+	animation-delay: 1s;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+   }
+   
+   #freddy > g > :nth-child(6) {
+	display: block !important;
+	animation: freddy-fingers 2s infinite;
+	animation-delay: 1s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+   }
+   
+   @keyframes freddy-fingers {
+	0% {
+	  transform: rotate(0deg);
+	}
+	25% {
+	  transform: rotate(-10deg);
+	}
+	50% {
+	  transform: rotate(-25deg);
+	}
+	75% {
+	  transform: rotate(-10deg);
+	}
+	100% {
+	  transform: rotate(0deg);
+	}
+   }
+   #chainsawblade_3_ {
+	animation: chainsawblade 4s infinite linear;
+   }
+   
+   @keyframes chainsawblade {
+	to {
+	  stroke-dashoffset: 1000;
+	}
+   }
+   #rasengan_x5F_effect_1_ > :nth-child(1) {
+	animation-name: rasengan, colorchange;
+	animation-duration: 5s, 7s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+   }
+   
+   #rasengan_x5F_effect_1_ > :nth-child(2) {
+	animation-name: rasengan, colorchange;
+	animation-duration: 6s, 7s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+   }
+   
+   #rasengan_x5F_effect_1_ > :nth-child(3) {
+	animation-name: rasengan, colorchange;
+	animation-duration: 7s, 7s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+   }
+   
+   #rasengan_x5F_effect_1_ > :nth-child(4) {
+	animation-name: rasengan, colorchange;
+	animation-duration: 8s, 7s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+   }
+   
+   @keyframes rasengan {
+	50% {
+	  transform: scale(0.7) rotate3d(0, 2, 1, 180deg);
+	}
+	100% {
+	  transform: scale(1.5) rotate3d(0, 2, 1, 360deg);
+	}
+   }
+   @keyframes colorchange {
+	0% {
+	  stroke: blue;
+	}
+	33% {
+	  stroke: cyan;
+	}
+	66% {
+	  stroke: yellow;
+	}
+	100% {
+	  stroke: white;
+	}
+   }
+   #mouth_frog {
+	overflow: visible;
+   }
+   #mouth_frog > * {
+	animation: frogBounce 2s infinite;
+	transform-origin: center;
+   }
+   
+   #mouth_frog_rightleg_2_ {
+	animation: frogLegMovement 4s infinite ease-in-out;
+   }
+   #mouth_frog_rightleg_2_ > g {
+	transform-origin: top;
+	animation: frogFootMovement 4s infinite ease-in-out;
+   }
+   
+   #mouth_frog_leftleg_2_ {
+	animation: frogLegMovement 5s infinite ease-in-out;
+   }
+   #mouth_frog_leftleg_2_ > g {
+	transform-origin: top left;
+	animation: frogFootMovement2 3s infinite ease-in-out;
+   }
+   
+   @keyframes frogBounce {
+	0%,
+	   100% {
+	  transform: scaleY(1);
+	}
+	25% {
+	  transform: scaleY(1.2);
+	}
+	50% {
+	  transform: scaleY(1);
+	}
+	75% {
+	  transform: scaleY(1.1);
+	}
+	90% {
+	  transform: scaleY(1.2);
+	}
+   }
+   @keyframes frogLegMovement {
+	0%,
+	   100% {
+	  transform: scaleY(0.8) rotate(5deg);
+	}
+	25% {
+	  transform: scaleY(1) rotate(-5deg);
+	}
+	50% {
+	  transform: scaleY(0.9) rotate(0deg);
+	}
+	75% {
+	  transform: scaleY(1) rotate(5deg);
+	}
+	90% {
+	  transform: scaleY(0.7) rotate(10deg);
+	}
+   }
+   @keyframes frogFootMovement {
+	0%,
+	   100% {
+	  transform: rotate(0deg);
+	}
+	25% {
+	  transform: rotate(-10deg);
+	}
+	50% {
+	  transform: rotate(-20deg);
+	}
+	75% {
+	  transform: rotate(-10deg);
+	}
+   }
+   @keyframes frogFootMovement2 {
+	0%,
+	   100% {
+	  transform: rotate(0deg);
+	}
+	25% {
+	  transform: rotate(5deg);
+	}
+	50% {
+	  transform: rotate(10deg);
+	}
+	75% {
+	  transform: rotate(5deg);
+	}
+   }
+   
