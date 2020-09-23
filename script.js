@@ -3,7 +3,7 @@
 //console.log(settings)
 
 fetch('https://young-crag-72283.herokuapp.com/restaurants')
-  .then(response => response.json())
+  .then(response => console.log(response))
   .then(data => console.log(data));
 
 (function waitFor() {
