@@ -2,6 +2,10 @@
 // var settings = script_tag.getAttribute("leftArmUpDuration");
 //console.log(settings)
 
+fetch('https://young-crag-72283.herokuapp.com/restaurants')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
 (function waitFor() {
 	if (document.querySelector("#yoda_overhang_accessories") === null) {
 		//look for last rendered svg and make sure it exists before executing the code below
