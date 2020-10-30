@@ -2,9 +2,35 @@
 // var settings = script_tag.getAttribute("leftArmUpDuration");
 //console.log(settings)
 
-fetch('https://young-crag-72283.herokuapp.com/restaurants')
-  .then(response => response.json())
-  .then(data => console.log(data));
+// fetch('https://young-crag-72283.herokuapp.com/restaurants')
+//   .then(response => response.json())
+//   .then(data => console.log(data));
+
+
+
+
+
+// async function getToken() {
+// 	const token = await fetch('https://streamlabs.com/api/v2.0/socket/token',
+// 	{
+// 		mode: 'no-cors',
+// 		method: 'GET',
+// 		credentials: 'omit',
+// 		headers: {
+// 		'Content-Type': 'application/x-www-form-urlencode',
+// 		'Access-Control-Allow-Origin':'*',
+// 		'Access-Control-Allow-Headers':'*'
+// 	}})
+
+	
+
+// }
+// getToken()
+
+	//const socketToken = ''; //Socket token from /socket/token end point
+  
+  //Connect to socket
+//const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
 
 (function waitFor() {
 	if (document.querySelector("#yoda_overhang_accessories") === null) {
