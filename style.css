@@ -2,6 +2,15 @@ html {
   font-size: 22px;
 }
 
+/* *, *:before, *:after {
+	box-sizing: border-box;
+   } */
+
+input[type='checkbox'] {
+	width:20px;
+	height:20px;
+}
+
 #main-form-menu {
   max-height: 100vh;
   overflow: overlay;
@@ -372,3 +381,39 @@ html {
     transform: rotate(5deg);
   }
 }
+
+#lines1_3_ > path {
+	animation: infovisor-screen-1 1000ms infinite alternate ease-in-out;
+}
+
+#lines2_3_ >path {
+	animation: infovisor-screen-2 7000ms infinite cubic-bezier(0.280, 0.840, 0.420, 1);;
+}
+#lines3_3_ > path {
+	animation: infovisor-screen-3 3000ms infinite;
+}
+
+
+@keyframes infovisor-screen-1 {
+	to {
+		transform: translateY(15px);
+	}
+   } 
+
+   @keyframes infovisor-screen-2 {
+	0,100% {
+		
+	}
+	25%,75% {
+		transform: translateY(65px);
+	}
+
+	50% {
+		transform: translateY(25px);
+	}
+   }
+	@keyframes infovisor-screen-3 {
+		to {
+			transform: translateY(45px);
+		}
+	}
