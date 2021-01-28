@@ -32,6 +32,23 @@
   //Connect to socket
 //const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
 
+const url = "https://api.quotable.io/random";
+function generateQuote(){
+   fetch(url)
+  .then(function(data) {
+         return data.json();
+    })
+    .then(function(data){    
+    console.log(data.content)
+   })
+ .catch(function(err) {
+    console.log(err); 
+    });
+ }
+ // Repeat generateQuote() every 10 seconds
+setInterval(generateQuote() ,10000);
+
+
 (function waitFor() {
 	if (document.querySelector("#yoda_overhang_accessories") === null) {
 		//look for last rendered svg and make sure it exists before executing the code below
