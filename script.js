@@ -32,21 +32,21 @@
   //Connect to socket
 //const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
 
-const url = "https://api.quotable.io/random";
-function generateQuote(){
-   fetch(url)
-  .then(function(data) {
-         return data.json();
-    })
-    .then(function(data){    
-    console.log(data.content)
-   })
- .catch(function(err) {
-    console.log(err); 
-    });
- }
- // Repeat generateQuote() every 10 seconds
-setInterval(generateQuote() ,10000);
+// const url = "https://api.quotable.io/random";
+// function generateQuote(){
+//    fetch(url)
+//   .then(function(data) {
+//          return data.json();
+//     })
+//     .then(function(data){    
+//     console.log(data.content)
+//    })
+//  .catch(function(err) {
+//     console.log(err); 
+//     });
+//  }
+//  // Repeat generateQuote() every 10 seconds
+// setInterval(generateQuote() ,10000);
 
 
 (function waitFor() {
