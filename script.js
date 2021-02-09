@@ -223,5 +223,7 @@
 		toggleMenuCreator("tattoos");
 		toggleMenuCreator("yoda_overhang_accessories");
 		toggleMenuCreator("mouths");
+		toggleMenuCreator("left_ear_items");
+		toggleMenuCreator("right_ear_items");
 	}
 })();
