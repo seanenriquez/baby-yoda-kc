@@ -219,6 +219,7 @@
 		}
 
 		toggleMenuCreator("face_accessories");
+		toggleMenuCreator("hair");
 		toggleMenuCreator("headwear");
 		toggleMenuCreator("tattoos");
 		toggleMenuCreator("yoda_overhang_accessories");
