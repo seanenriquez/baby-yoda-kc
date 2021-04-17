@@ -45,6 +45,7 @@ input[type='checkbox'] {
 #hands,
 #tattoos,
 #yoda_overhang_accessories,
+#hair,
 #mouths {
   animation: yoda 10s infinite alternate;
   transform-origin: initial;
