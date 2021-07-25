@@ -175,7 +175,7 @@
 
 		//handles UI
 
-		function toggleMenuCreator(itemGroup) {
+		function createMenuLabel(itemGroup) {
 			const menu = document.querySelector("#main-form-menu");
 			const newForm = document.createElement("form");
 			const formHeader = document.createElement("div");
@@ -184,7 +184,11 @@
 			newForm.id = `${itemGroup}_form`;
 			newForm.appendChild(formHeader);
 			menu.appendChild(newForm);
+			return newForm
+		}
 
+		function toggleMenuCreator(itemGroup) {
+			const newForm = createMenuLabel(itemGroup)
 			const svgGroup = document.querySelector(`#${itemGroup}`);
 
 			const svgItems = svgGroup.querySelectorAll(":scope > use ");
@@ -218,6 +222,35 @@
 			});
 		}
 
+		function colorMenuForClothes(itemGroup) {
+			const newForm = createMenuLabel(itemGroup)
+			const colorPickerFill = [document.createElement('input'),document.createElement('label')]
+			colorPickerFill[0].id = 'colorPickerFill'
+			colorPickerFill[0].type="color"
+			const colorPickerStroke = [document.createElement('input'),document.createElement('label')]
+			colorPickerStroke[0].type="color"
+			colorPickerStroke[0].id = 'colorPickerStroke'
+			newForm.append(...colorPickerFill,...colorPickerStroke)
+			const baseShirt = document.querySelector('#clothes')
+			const leftSleeve = document.querySelector('#left_sleeve')
+			const rightSleeve = document.querySelector('#right_sleeve')
+			colorPickerFill[0].addEventListener('input', function(e) {
+				backRGB = this.value;
+				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
+					child.style.fill = backRGB
+
+				})
+			})
+			colorPickerStroke[0].addEventListener('input', function(e) {
+				backRGB = this.value;
+				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
+					child.style.stroke = backRGB
+
+				})
+			})
+			
+		}
+
 		toggleMenuCreator("face_accessories");
 		toggleMenuCreator("hair");
 		toggleMenuCreator("headwear");
@@ -226,5 +259,6 @@
 		toggleMenuCreator("mouths");
 		toggleMenuCreator("left_ear_items");
 		toggleMenuCreator("right_ear_items");
+		colorMenuForClothes("clothes");
 	}
 })();
