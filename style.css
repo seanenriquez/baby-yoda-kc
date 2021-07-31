@@ -24,6 +24,10 @@ input[type='checkbox'] {
   opacity: 0;
 }
 
+button {
+	padding: 20px;
+}
+
 #main-form-menu:hover {
   opacity: 1;
 }
@@ -229,7 +233,7 @@ input[type='checkbox'] {
     transform: rotate(0deg);
   }
 }
-#chainsawblade_3_ {
+#chainsawblade_1_ {
   animation: chainsawblade 4s infinite linear;
 }
 

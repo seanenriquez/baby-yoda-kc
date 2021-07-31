@@ -334,7 +334,7 @@
 
 			newForm.append(saveButton)
 		}
-
+		
 		toggleMenuCreator("face_accessories");
 		toggleMenuCreator("hair");
 		toggleMenuCreator("headwear");
