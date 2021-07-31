@@ -49,7 +49,7 @@
 // setInterval(generateQuote() ,10000);
 
 
-// const firebase = window.firebase
+
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -255,32 +255,88 @@
 
 		function colorMenuForClothes(itemGroup) {
 			const newForm = createMenuLabel(itemGroup)
-			const colorPickerFill = [document.createElement('input'),document.createElement('label')]
-			colorPickerFill[0].id = 'colorPickerFill'
-			colorPickerFill[0].type="color"
-			colorPickerFill[0].value = settings['colorPickerFill']
-			const colorPickerStroke = [document.createElement('input'),document.createElement('label')]
-			colorPickerStroke[0].type="color"
-			colorPickerStroke[0].id = 'colorPickerStroke'
-			colorPickerStroke[0].value = settings['colorPickerStroke']
-			newForm.append(...colorPickerFill,...colorPickerStroke)
+			const colorPickerFill = document.createElement('div')
+			colorPickerFill.id = 'colorPickerFill'
+			const colorPickerStroke = document.createElement('div')
+			colorPickerStroke.id = 'colorPickerStroke'
+			newForm.append(colorPickerFill,colorPickerStroke)
+			const fillControl = Pickr.create({
+				el: '#colorPickerFill',
+				theme: 'nano', // or 'monolith', or 'nano'
+				appClass:'colorPickerFill',
+				default:settings['colorPickerFill'] || '#C99376',
+				components: {
+			
+					// Main components
+					preview: true,
+					opacity: true,
+					hue: true,
+			
+					// Input / output Options
+					interaction: {
+						hex: true,
+						rgba: true,
+						hsla: true,
+						hsva: true,
+						cmyk: true,
+						input: true,
+						clear: true,
+						save:true
+					}
+				}
+			});
+
+			const strokeControl = Pickr.create({
+				el: '#colorPickerStroke',
+				theme: 'nano', // or 'monolith', or 'nano'
+				appClass:'colorPickerStroke',
+				default:settings['colorPickerStroke'] || '#B77B53',
+				components: {
+			
+					// Main components
+					preview: true,
+					opacity: true,
+					hue: true,
+			
+					// Input / output Options
+					interaction: {
+						hex: true,
+						rgba: true,
+						hsla: true,
+						hsva: true,
+						cmyk: true,
+						input: true,
+						clear: true,
+						save: true
+					}
+				}
+			});
+
+
+			
 			
 			const baseShirt = document.querySelector('#clothes')
 			const leftSleeve = document.querySelector('#left_sleeve')
 			const rightSleeve = document.querySelector('#right_sleeve')
-			colorPickerFill[0].addEventListener('input', function(e) {
-				backRGB = this.value;
+
+			fillControl.on('change', (color) => {
 				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
-					child.style.fill = backRGB
+					child.style.fill = color.toHEXA().toString()
 
 				})
 			})
-			colorPickerStroke[0].addEventListener('input', function(e) {
-				backRGB = this.value;
+			.on('save', function(color) {
+				
+				db.doc("baby-yoda/settings").update({colorPickerFill:color.toHEXA().toString()})
+			})
+			strokeControl.on('change', function(color) {
 				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
-					child.style.stroke = backRGB
+					child.style.stroke = color.toHEXA().toString()
 
 				})
+			})
+			.on('save', function(color) {
+				db.doc("baby-yoda/settings").update({colorPickerStroke:color.toHEXA().toString()})
 			})
 
 			Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
@@ -304,20 +360,19 @@
 
 			const formMenu = document.querySelector('#main-form-menu')
 			const inputs = formMenu.querySelectorAll('input')
+			// inputs.push(document.qu)
 
 			saveButton.addEventListener('click', (e) => {
 				//needs to get each input each save because a new object wont  be see on the server
 				const inputObj = {}
 				inputs.forEach(input => {
-					console.log(input.type)
+
 					if(input.type === 'checkbox') {
 						if(input.checked) {
 							inputObj[input.id] = true
 						} else {
 							inputObj[input.id]= false
 						}
-					} else {
-						inputObj[input.id] = input.value
 					}
 				})
 
