@@ -49,7 +49,30 @@
 // setInterval(generateQuote() ,10000);
 
 
-(function waitFor() {
+
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAAk-eApRh2FsIKfp689_zS5N_jeD07SZ4",
+    authDomain: "baby-yoda-1184d.firebaseapp.com",
+    projectId: "baby-yoda-1184d",
+    storageBucket: "baby-yoda-1184d.appspot.com",
+    messagingSenderId: "643303472381",
+    appId: "1:643303472381:web:e09c05c780eaaaf0b81294"
+  };
+  // Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(); //needs ';'
+
+
+
+
+(async function  waitFor() {
+	const settings = await db.collection(`baby-yoda`).doc('settings').get().then(  (querySnapshot) => {
+		return querySnapshot.data()
+	})
+
 	if (document.querySelector("#yoda_overhang_accessories") === null) {
 		//look for last rendered svg and make sure it exists before executing the code below
 		console.log("loading...");
@@ -199,11 +222,16 @@
 				checkBox.id = `${itemName}_checkbox`;
 				checkBox.setAttribute("type", "checkbox");
 
-				if (item.style.display == "") {
+				
+				if(settings[checkBox.id] === true ) {
 					checkBox.checked = true;
+					item.style.display = 'block'
 				} else {
 					checkBox.checked = false;
+					item.style.display = "none";
 				}
+				
+
 				checkBox.name = itemName;
 				checkBox.addEventListener("change", function () {
 					if (this.checked) {
@@ -227,10 +255,13 @@
 			const colorPickerFill = [document.createElement('input'),document.createElement('label')]
 			colorPickerFill[0].id = 'colorPickerFill'
 			colorPickerFill[0].type="color"
+			colorPickerFill[0].value = settings['colorPickerFill']
 			const colorPickerStroke = [document.createElement('input'),document.createElement('label')]
 			colorPickerStroke[0].type="color"
 			colorPickerStroke[0].id = 'colorPickerStroke'
+			colorPickerStroke[0].value = settings['colorPickerStroke']
 			newForm.append(...colorPickerFill,...colorPickerStroke)
+			
 			const baseShirt = document.querySelector('#clothes')
 			const leftSleeve = document.querySelector('#left_sleeve')
 			const rightSleeve = document.querySelector('#right_sleeve')
@@ -248,7 +279,60 @@
 
 				})
 			})
+
+			Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
+				child.style.fill = settings['colorPickerFill']
+
+			})
+
+			Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
+				child.style.stroke = settings['colorPickerStroke']
+
+			})
 			
+		}
+
+		function saveSettingsMenuCreator() {
+		
+			const newForm = createMenuLabel('Save Settings')
+			const saveButton = document.createElement('Button')
+			saveButton.type = 'button'
+			saveButton.innerHTML = "Save"
+
+			const formMenu = document.querySelector('#main-form-menu')
+			const inputs = formMenu.querySelectorAll('input')
+
+			saveButton.addEventListener('click', (e) => {
+				//needs to get each input each save because a new object wont  be see on the server
+				const inputObj = {}
+				inputs.forEach(input => {
+					console.log(input.type)
+					if(input.type === 'checkbox') {
+						if(input.checked) {
+							inputObj[input.id] = true
+						} else {
+							inputObj[input.id]= false
+						}
+					} else {
+						inputObj[input.id] = input.value
+					}
+				})
+
+				db.doc("baby-yoda/settings").set(
+					// updatedAt:firebase.firestore.Timestamp.fromDate(new Date()),
+					inputObj
+				)
+				.then((docRef) => {
+					console.log("Document written with ID: ", docRef);
+				})
+				.catch((error) => {
+					console.error("Error adding document: ", error);
+				});
+				
+				
+			})
+
+			newForm.append(saveButton)
 		}
 
 		toggleMenuCreator("face_accessories");
@@ -260,5 +344,8 @@
 		toggleMenuCreator("left_ear_items");
 		toggleMenuCreator("right_ear_items");
 		colorMenuForClothes("clothes");
+		saveSettingsMenuCreator()
+
 	}
 })();
+
