@@ -49,7 +49,7 @@
 // setInterval(generateQuote() ,10000);
 
 
-const firebase = window.firebase
+// const firebase = window.firebase
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -62,16 +62,19 @@ const firebase = window.firebase
   };
   // Initialize Firebase
 
+  
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore(); //needs ';'
-
-
+  db = firebase.firestore(); //needs ';'
 
 
 (async function  waitFor() {
 	const settings = await db.collection(`baby-yoda`).doc('settings').get().then(  (querySnapshot) => {
 		return querySnapshot.data()
 	})
+
+
+	  
+
 
 	if (document.querySelector("#yoda_overhang_accessories") === null) {
 		//look for last rendered svg and make sure it exists before executing the code below
