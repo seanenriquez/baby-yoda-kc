@@ -49,7 +49,7 @@
 // setInterval(generateQuote() ,10000);
 
 
-
+const firebase = window.firebase
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
