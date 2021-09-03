@@ -233,7 +233,7 @@ button {
     transform: rotate(0deg);
   }
 }
-#chainsawblade_1_ {
+#chainsawblade_1_, #chainsawblade_2_ {
   animation: chainsawblade 4s infinite linear;
 }
 
