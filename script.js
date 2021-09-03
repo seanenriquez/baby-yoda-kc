@@ -322,7 +322,6 @@
 			fillControl.on('change', (color) => {
 				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
 					child.style.fill = color.toHEXA().toString()
-
 				})
 			})
 			.on('save', function(color) {
@@ -378,7 +377,7 @@
 
 				db.doc("baby-yoda/settings").set(
 					// updatedAt:firebase.firestore.Timestamp.fromDate(new Date()),
-					inputObj
+					{...inputObj},{merge:true}
 				)
 				.then((docRef) => {
 					console.log("Document written with ID: ", docRef);
