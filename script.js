@@ -318,7 +318,8 @@
 			const baseShirt = document.querySelector('#clothes')
 			const leftSleeve = document.querySelector('#left_sleeve')
 			const rightSleeve = document.querySelector('#right_sleeve')
-
+			const frontLeftSleeve = leftSleeve.parentElement.children[2] //hacky, i know lol
+			const frontRightSleeve = rightSleeve.parentElement.children[2] 
 			fillControl.on('change', (color) => {
 				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
 					child.style.fill = color.toHEXA().toString()
@@ -329,7 +330,7 @@
 				db.doc("baby-yoda/settings").update({colorPickerFill:color.toHEXA().toString()})
 			})
 			strokeControl.on('change', function(color) {
-				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children]).forEach(child => {
+				Array.from([...baseShirt.children,...leftSleeve.children,...rightSleeve.children,frontLeftSleeve,frontRightSleeve]).forEach(child => {
 					child.style.stroke = color.toHEXA().toString()
 
 				})
